@@ -1,0 +1,117 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroller"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/black"
+    android:fillViewport="true" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <CheckBox
+            android:id="@+id/chkBrightness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Brightness"
+            android:textColor="@color/white" />
+
+        <SeekBar
+            android:id="@+id/skbBrightness"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/txtBrightness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/white" />
+
+        <CheckBox
+            android:id="@+id/chkContrast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contrast"
+            android:textColor="@color/white" />
+
+        <SeekBar
+            android:id="@+id/skbContrast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/txtContrast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/white" />
+
+        <CheckBox
+            android:id="@+id/chkMorph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Morphing"
+            android:textColor="@color/white" />
+
+        <SeekBar
+            android:id="@+id/skbMorph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="50" />
+
+        <TextView
+            android:id="@+id/txtMorph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Filters"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white" />
+
+        <CheckBox
+            android:id="@+id/chkHomogeneousFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Homogeneous Filter"
+            android:textColor="@color/white" />
+
+        <CheckBox
+            android:id="@+id/chkGaussianFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gaussian Filter"
+            android:textColor="@color/white" />
+
+        <CheckBox
+            android:id="@+id/chkMedianFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Median Filter"
+            android:textColor="@color/white" />
+
+        <CheckBox
+            android:id="@+id/chkBilateralFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bilateral Filter"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnUpload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Upload Image"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</ScrollView>
