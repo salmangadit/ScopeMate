@@ -93,7 +93,7 @@ public class Morphing {
 			e.printStackTrace();
 		}
 
-		Log.v(TAG, "sourceImage Size: " + sourceImage.getByteCount());
+		//Log.v(TAG, "sourceImage Size: " + sourceImage.getByteCount());
 		
 		destImage=sourceImage;
 		
@@ -113,7 +113,7 @@ public class Morphing {
 			
 		Utils.matToBitmap(destImageMat, destImage);
 		
-		Log.v(TAG, "destImage Size: " + destImage.getByteCount());
+		//Log.v(TAG, "destImage Size: " + destImage.getByteCount());
 		
 		File file = new File(
 				Environment

@@ -32,6 +32,16 @@ public class CropScreen extends Activity {
 	boolean gaussianBool;
 	boolean medianBool;
 	boolean bilateralBool;
+	boolean greyscaleBool;
+	boolean pyramidDownBool;
+	boolean pyramidUpBool;
+	boolean histogramBool;
+	
+	boolean thresholdingBool;
+	boolean otsuBool;
+	String thresholdingType;
+	int thresholdingValue, thresholdingMaxValue;
+
 	ArrayList<String> rankList = new ArrayList<String>();
 
 	@Override
@@ -51,6 +61,17 @@ public class CropScreen extends Activity {
 		gaussianBool = getIntent().getBooleanExtra("gaussianChecked", false);
 		medianBool = getIntent().getBooleanExtra("medianChecked", false);
 		bilateralBool = getIntent().getBooleanExtra("bilateralChecked", false);
+		greyscaleBool = getIntent().getBooleanExtra("greyscaleChecked", false);
+		pyramidDownBool = getIntent()
+				.getBooleanExtra("pyramidDownChecked", false);
+		pyramidUpBool = getIntent().getBooleanExtra("pyramidUpChecked", false);
+		histogramBool = getIntent().getBooleanExtra("histogramChecked", false);
+		thresholdingBool = getIntent().getBooleanExtra("thresholdingChecked", false);
+		otsuBool = getIntent().getBooleanExtra("otsuChecked", false);
+		thresholdingType = getIntent().getStringExtra("thresholdingType");
+		thresholdingValue = getIntent().getIntExtra("thresholdingValue", 0);
+		thresholdingMaxValue = getIntent().getIntExtra("thresholdingMaxValue", 0);
+		
 		rankList = getIntent().getStringArrayListExtra("rankList");
 
 		Log.v(TAG, "enter...");
@@ -114,8 +135,16 @@ public class CropScreen extends Activity {
 				intent.putExtra("gaussianChecked", gaussianBool);
 				intent.putExtra("medianChecked", medianBool);
 				intent.putExtra("bilateralChecked", bilateralBool);
+				intent.putExtra("greyscaleChecked", greyscaleBool);
+				intent.putExtra("pyramidDownChecked", pyramidDownBool);
+				intent.putExtra("pyramidUpChecked", pyramidUpBool);
+				intent.putExtra("histogramChecked", histogramBool);
+				intent.putExtra("thresholdingChecked", thresholdingBool);
+				intent.putExtra("otsuChecked", otsuBool);
+				intent.putExtra("thresholdingType", thresholdingType);
+				intent.putExtra("thresholdingValue", thresholdingValue);
+				intent.putExtra("thresholdingMaxValue", thresholdingMaxValue);
 				intent.putExtra("rankList", rankList);
-				clearBitmap(myimage);
 				startActivity(intent);
 
 			}
@@ -140,22 +169,31 @@ public class CropScreen extends Activity {
 				intent.putExtra("gaussianChecked", gaussianBool);
 				intent.putExtra("medianChecked", medianBool);
 				intent.putExtra("bilateralChecked", bilateralBool);
+				intent.putExtra("greyscaleChecked", greyscaleBool);
+				intent.putExtra("pyramidDownChecked", pyramidDownBool);
+				intent.putExtra("pyramidUpChecked", pyramidUpBool);
+				intent.putExtra("histogramChecked", histogramBool);
+				intent.putExtra("thresholdingChecked", thresholdingBool);
+				intent.putExtra("otsuChecked", otsuBool);
+				intent.putExtra("thresholdingType", thresholdingType);
+				intent.putExtra("thresholdingValue", thresholdingValue);
+				intent.putExtra("thresholdingMaxValue", thresholdingMaxValue);
 				intent.putExtra("rankList", rankList);
 				startActivity(intent);
 			}
 		});
 
 	}
-	
-	// Clear bitmap 
 
-	public static void clearBitmap(Bitmap bm) { 
+	// Clear bitmap
 
-	bm.recycle(); 
+	public static void clearBitmap(Bitmap bm) {
 
-	System.gc(); 
+		bm.recycle();
 
-	} 
+		System.gc();
+
+	}
 
 	// Read bitmap
 	public Bitmap readBitmap(Uri selectedImage) {

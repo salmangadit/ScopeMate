@@ -33,6 +33,16 @@ public class Cropping extends Activity {
 	boolean gaussianBool;
 	boolean medianBool;
 	boolean bilateralBool;
+	boolean greyscaleBool;
+	boolean pyramidDownBool;
+	boolean pyramidUpBool;
+	boolean histogramBool;
+	
+	boolean thresholdingBool;
+	boolean otsuBool;
+	String thresholdingType;
+	int thresholdingValue, thresholdingMaxValue;
+	
 	ArrayList<String> rankList = new ArrayList<String>();
 	// private Uri outputFileUri;
 
@@ -54,6 +64,17 @@ public class Cropping extends Activity {
 		gaussianBool = getIntent().getBooleanExtra("gaussianChecked", false);
 		medianBool = getIntent().getBooleanExtra("medianChecked", false);
 		bilateralBool = getIntent().getBooleanExtra("bilateralChecked", false);
+		greyscaleBool = getIntent().getBooleanExtra("greyscaleChecked", false);
+		pyramidDownBool = getIntent()
+				.getBooleanExtra("pyramidDownChecked", false);
+		pyramidUpBool = getIntent().getBooleanExtra("pyramidUpChecked", false);
+		histogramBool = getIntent().getBooleanExtra("histogramChecked", false);
+		thresholdingBool = getIntent().getBooleanExtra("thresholdingChecked", false);
+		otsuBool = getIntent().getBooleanExtra("otsuChecked", false);
+		thresholdingType = getIntent().getStringExtra("thresholdingType");
+		thresholdingValue = getIntent().getIntExtra("thresholdingValue", 0);
+		thresholdingMaxValue = getIntent().getIntExtra("thresholdingMaxValue", 0);
+		
 		rankList = getIntent().getStringArrayListExtra("rankList");
 		Log.v(TAG, "Brightness: "+ brightnessValue);
 		if (rankList == null)
@@ -113,6 +134,8 @@ public class Cropping extends Activity {
 				Bitmap thePic = extras.getParcelable("data");
 
 				// Storing cropped file in temporary location
+				Log.v(TAG, "Path: " + Environment
+								.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES));
 				File file = new File(
 						Environment
 								.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
@@ -143,6 +166,15 @@ public class Cropping extends Activity {
 				intent.putExtra("gaussianChecked", gaussianBool);
 				intent.putExtra("medianChecked", medianBool);
 				intent.putExtra("bilateralChecked", bilateralBool);
+				intent.putExtra("greyscaleChecked", greyscaleBool);
+				intent.putExtra("pyramidDownChecked", pyramidDownBool);
+				intent.putExtra("pyramidUpChecked", pyramidUpBool);
+				intent.putExtra("histogramChecked", histogramBool);
+				intent.putExtra("thresholdingChecked", thresholdingBool);
+				intent.putExtra("otsuChecked", otsuBool);
+				intent.putExtra("thresholdingType", thresholdingType);
+				intent.putExtra("thresholdingValue", thresholdingValue);
+				intent.putExtra("thresholdingMaxValue", thresholdingMaxValue);
 				intent.putStringArrayListExtra("rankList", rankList);
 				startActivity(intent);
 			}
@@ -162,6 +194,15 @@ public class Cropping extends Activity {
 			intent.putExtra("gaussianChecked", gaussianBool);
 			intent.putExtra("medianChecked", medianBool);
 			intent.putExtra("bilateralChecked", bilateralBool);
+			intent.putExtra("greyscaleChecked", greyscaleBool);
+			intent.putExtra("pyramidDownChecked", pyramidDownBool);
+			intent.putExtra("pyramidUpChecked", pyramidUpBool);
+			intent.putExtra("histogramChecked", histogramBool);
+			intent.putExtra("thresholdingChecked", thresholdingBool);
+			intent.putExtra("otsuChecked", otsuBool);
+			intent.putExtra("thresholdingType", thresholdingType);
+			intent.putExtra("thresholdingValue", thresholdingValue);
+			intent.putExtra("thresholdingMaxValue", thresholdingMaxValue);
 			intent.putStringArrayListExtra("rankList", rankList);
 			startActivity(intent);
 

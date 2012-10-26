@@ -1,12 +1,9 @@
 package com.example.scopemate;
 
-import com.example.scopemate.MainActivity.ButtonClickHandler;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,6 +54,7 @@ public class ResultActivity extends Activity {
  		public void onClick(View view) {
  			// Activity to open Main
  			Intent intent = new Intent(a, MainActivity.class);
+ 			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
  			startActivity(intent);
  		}
  	}

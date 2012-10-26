@@ -7,11 +7,21 @@
 
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="grey">#CDCDCD</color>
 
     <string name="receive">Received</string>
     <string name="crop">Crop</string>
     <string name="ocr">OCR it!</string>
     <string name="done">Done</string>
     <string name="title_activity_result">ResultActivity</string>
+    <string name="thresh_prompt">Choose Thresh</string>
+    
+    <string-array name="thresholds">
+        <item>Binary</item>
+        <item>Binary Inverted</item>
+        <item>Truncated</item>
+        <item>To Zero</item>
+        <item>To Zero Inverted</item>
+    </string-array>
 
 </resources>

@@ -16,12 +16,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	CheckBox brightnessBool;
@@ -39,6 +42,14 @@ public class MainActivity extends Activity {
 	TextView morphValText;
 	int morphValueActual;
 	boolean morph = false;
+	
+	CheckBox thresholding;
+	CheckBox otsu;
+	SeekBar thresholdingValue;
+	SeekBar thresholdingMaxValue;
+	TextView thresholdingValueText;
+	TextView thresholdingMaxValueText;
+	Spinner threshSpinner;
 
 	OnClickListener brightnessCheckBoxListener, 
 		contrastCheckBoxListener,
@@ -46,12 +57,23 @@ public class MainActivity extends Activity {
 		homogeneousCheckBoxListener,
 		gaussianCheckBoxListener,
 		medianCheckBoxListener,
-		bilateralCheckBoxListener;
+		bilateralCheckBoxListener,
+		greyscaleCheckBoxListener,
+		pyramidDownCheckBoxListener,
+		pyramidUpCheckBoxListener,
+		histogramCheckBoxListener,
+		thresholdingCheckBoxListener,
+		otsuCheckBoxListener;
 
 	CheckBox homogeneousFilter;
 	CheckBox gaussianFilter;
 	CheckBox medianFilter;
 	CheckBox bilateralFilter;
+	CheckBox greyscale;
+	CheckBox pyramidDown;
+	CheckBox pyramidUp;
+	CheckBox histogram;
+	
 	
 	ArrayList<String> orderList = new ArrayList<String>();
 
@@ -70,10 +92,22 @@ public class MainActivity extends Activity {
 		gaussianFilter = (CheckBox) findViewById(R.id.chkGaussianFilter);
 		medianFilter = (CheckBox) findViewById(R.id.chkMedianFilter);
 		bilateralFilter = (CheckBox) findViewById(R.id.chkBilateralFilter);
+		greyscale = (CheckBox) findViewById(R.id.chkGreyscale);
+		pyramidDown = (CheckBox) findViewById(R.id.chkPyramidDown);
+		pyramidUp = (CheckBox) findViewById(R.id.chkPyramidUp);
+		histogram = (CheckBox) findViewById(R.id.chkHistogram);
 
 		brightnessBool = (CheckBox) findViewById(R.id.chkBrightness);
 		brightnessValue = (SeekBar) findViewById(R.id.skbBrightness);
 		brightnessValText = (TextView) findViewById(R.id.txtBrightness);
+		
+		thresholding = (CheckBox) findViewById(R.id.chkThresholding);
+		otsu = (CheckBox) findViewById(R.id.chkOtsu);
+		thresholdingValue = (SeekBar) findViewById(R.id.skbThreshValue);
+		thresholdingMaxValue = (SeekBar) findViewById(R.id.skbThreshMax);
+		thresholdingValueText = (TextView) findViewById(R.id.txtThreshValue);
+		thresholdingMaxValueText = (TextView) findViewById(R.id.txtThreshMax);
+		threshSpinner = (Spinner) findViewById(R.id.spnThreshType);
 
 		brightnessValue
 				.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
@@ -126,6 +160,42 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				morphValueActual = (progress - 50) * 2;
 				morphValText.setText("Morph %: " + morphValueActual);
+			}
+
+			public void onStartTrackingTouch(SeekBar arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			public void onStopTrackingTouch(SeekBar arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		
+		thresholdingValue.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+			public void onProgressChanged(SeekBar seekBar, int progress,
+					boolean fromUser) {
+				// TODO Auto-generated method stub
+				thresholdingValueText.setText("Threshold Value: " + progress);
+			}
+
+			public void onStartTrackingTouch(SeekBar arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			public void onStopTrackingTouch(SeekBar arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		
+		thresholdingMaxValue.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+			public void onProgressChanged(SeekBar seekBar, int progress,
+					boolean fromUser) {
+				// TODO Auto-generated method stub
+				thresholdingMaxValueText.setText("Threshold Maximum Value: " + progress);
 			}
 
 			public void onStartTrackingTouch(SeekBar arg0) {
@@ -203,6 +273,69 @@ public class MainActivity extends Activity {
 				}
 			}
 		};
+		
+		greyscaleCheckBoxListener = new OnClickListener() {
+			public void onClick(View v) {
+				if (greyscale.isChecked()) {
+					orderList.add("greyscale");
+				} else if (!greyscale.isChecked()) {
+					orderList.remove("greyscale");
+				}
+			}
+		};
+		
+		pyramidUpCheckBoxListener = new OnClickListener() {
+			public void onClick(View v) {
+				if (pyramidUp.isChecked()) {
+					orderList.add("pyramidUp");
+				} else if (!pyramidUp.isChecked()) {
+					orderList.remove("pyramidUp");
+				}
+			}
+		};
+		
+		pyramidDownCheckBoxListener = new OnClickListener() {
+			public void onClick(View v) {
+				if (pyramidDown.isChecked()) {
+					orderList.add("pyramidDown");
+				} else if (!pyramidDown.isChecked()) {
+					orderList.remove("pyramidDown");
+				}
+			}
+		};
+		
+		histogramCheckBoxListener = new OnClickListener() {
+			public void onClick(View v) {
+				if (histogram.isChecked()) {
+					orderList.add("histogram");
+				} else if (!histogram.isChecked()) {
+					orderList.remove("histogram");
+				}
+			}
+		};
+		
+		thresholdingCheckBoxListener = new OnClickListener() {
+			public void onClick(View v) {
+				if (thresholding.isChecked()) {
+					orderList.add("thresholding");
+				} else if (!thresholding.isChecked()) {
+					orderList.remove("thresholding");
+				}
+			}
+		};
+		
+		otsuCheckBoxListener = new OnClickListener() {
+			public void onClick(View v) {
+				if (otsu.isChecked()) {
+					thresholdingValue.setEnabled(false);
+					Toast.makeText(MainActivity.this.getApplicationContext(), 
+					"Otsu Algorithm will choose an appropriate value for the Value!",
+					Toast.LENGTH_SHORT).show();
+				} else if (!otsu.isChecked()) {
+					thresholdingValue.setEnabled(true);
+				}
+			}
+		};
 
 		brightnessBool.setOnClickListener(brightnessCheckBoxListener);
 		contrastBool.setOnClickListener(contrastCheckBoxListener);
@@ -211,7 +344,13 @@ public class MainActivity extends Activity {
 		gaussianFilter.setOnClickListener(gaussianCheckBoxListener);
 		medianFilter.setOnClickListener(medianCheckBoxListener);
 		bilateralFilter.setOnClickListener(bilateralCheckBoxListener);
-
+		greyscale.setOnClickListener(bilateralCheckBoxListener);
+		pyramidDown.setOnClickListener(pyramidDownCheckBoxListener);
+		pyramidUp.setOnClickListener(pyramidUpCheckBoxListener);
+		histogram.setOnClickListener(histogramCheckBoxListener);
+		thresholding.setOnClickListener(thresholdingCheckBoxListener);
+		otsu.setOnClickListener(otsuCheckBoxListener);
+		
 		_button = (Button) findViewById(R.id.btnUpload);
 		_button.setOnClickListener(new ButtonClickHandler());
 	}
@@ -237,6 +376,25 @@ public class MainActivity extends Activity {
 			Log.v(TAG, "3.. Pass");
 
 		}
+	}
+	
+	public class CustomOnItemSelectedListener implements OnItemSelectedListener {
+		 
+		  public void onItemSelected(AdapterView<?> parent, View view, int pos,long id) {
+			  if (parent.getItemAtPosition(pos).toString().equals("Otsu Algorithm"))
+			  {
+				  
+			  }
+			  else
+			  {
+				  
+			  }
+		  }
+		 
+		  @Override
+		  public void onNothingSelected(AdapterView<?> arg0) {
+			// TODO Auto-generated method stub
+		  }
 	}
 
 	// To save the chosen image
@@ -283,6 +441,16 @@ public class MainActivity extends Activity {
 			intent.putExtra("gaussianChecked", gaussianFilter.isChecked());
 			intent.putExtra("medianChecked", medianFilter.isChecked());
 			intent.putExtra("bilateralChecked", bilateralFilter.isChecked());
+			intent.putExtra("greyscaleChecked", greyscale.isChecked());
+			intent.putExtra("pyramidDownChecked", pyramidDown.isChecked());
+			intent.putExtra("pyramidUpChecked", pyramidUp.isChecked());
+			intent.putExtra("histogramChecked", histogram.isChecked());
+			intent.putExtra("thresholdingChecked", thresholding.isChecked());
+			intent.putExtra("otsuChecked", otsu.isChecked());
+			intent.putExtra("thresholdingType", threshSpinner.getSelectedItem().toString());
+			intent.putExtra("thresholdingValue", thresholdingValue.getProgress());
+			intent.putExtra("thresholdingMaxValue", thresholdingMaxValue.getProgress());
+			
 			
 			//Bundle list_bundle=new Bundle();
 	        //list_bundle.putStringArrayListExtra("lists",orderList);
@@ -295,3 +463,6 @@ public class MainActivity extends Activity {
 		}
 	}
 }
+
+
+	 

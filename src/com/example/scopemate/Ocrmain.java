@@ -13,8 +13,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.widget.Toast;
-
 import com.googlecode.tesseract.android.TessBaseAPI;
 
 public class Ocrmain extends Activity {
@@ -56,7 +54,7 @@ public class Ocrmain extends Activity {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		Log.v(TAG, "bitmap " + myimage.getByteCount());
+		//Log.v(TAG, "bitmap " + myimage.getByteCount());
 //        Bitmap argb = myimage;
 //        argb = argb.copy(Bitmap.Config.ARGB_8888, true);
 //        Log.v(TAG, "bitmap after argb:" + argb.getByteCount());
@@ -64,7 +62,7 @@ public class Ocrmain extends Activity {
 		BitmapFactory.Options opt = new BitmapFactory.Options();
         opt.inSampleSize = 2;
         myimage = BitmapFactory.decodeFile(filepath, opt);
-        Log.v(TAG, "bitmap after comp:" + myimage.getByteCount());
+        //Log.v(TAG, "bitmap after comp:" + myimage.getByteCount());
 		
         //TessBase starts
 		TessBaseAPI baseApi = new TessBaseAPI();

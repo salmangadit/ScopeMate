@@ -68,6 +68,13 @@
             android:layout_height="wrap_content"
             android:text=""
             android:textColor="@color/white" />
+        
+        <CheckBox
+            android:id="@+id/chkHistogram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Equalise Histogram"
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/textView3"
@@ -104,6 +111,105 @@
             android:layout_height="wrap_content"
             android:text="Bilateral Filter"
             android:textColor="@color/white" />
+        
+        <CheckBox
+            android:id="@+id/chkGreyscale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Greyscale"
+            android:textColor="@color/white" />
+        
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pyramids"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white" />
+        
+        <CheckBox
+            android:id="@+id/chkPyramidDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pyramid Down"
+            android:textColor="@color/white" />
+        
+        <CheckBox
+            android:id="@+id/chkPyramidUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pyramid Up"
+            android:textColor="@color/white" />
+        
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thresholding"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white" />
+        
+        <CheckBox
+            android:id="@+id/chkThresholding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Use Thresholding"
+            android:textColor="@color/white" />
+
+        <CheckBox
+            android:id="@+id/chkOtsu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Use Otsu's Threshold?"
+            android:textColor="@color/white" />
+        
+         <TextView
+            android:id="@+id/txtThreshV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Threshold Value:"
+            android:textColor="@color/white" />
+
+        <SeekBar
+            android:id="@+id/skbThreshValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" 
+            android:max="255"/>
+
+        <TextView
+            android:id="@+id/txtThreshValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/white" />
+        
+        <TextView
+            android:id="@+id/txtThreshMV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Threshold Max Value:"
+            android:textColor="@color/white" />
+        
+        <SeekBar
+            android:id="@+id/skbThreshMax"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" 
+            android:max="255"/>
+
+        <TextView
+            android:id="@+id/txtThreshMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/white" />
+        
+        <Spinner
+            android:id="@+id/spnThreshType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/thresholds"
+       		android:prompt="@string/thresh_prompt" 
+       		android:background="@color/grey" />
 
         <Button
             android:id="@+id/btnUpload"

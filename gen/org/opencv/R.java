@@ -8,10 +8,14 @@
 package org.opencv;
 
 public final class R {
+    public static final class array {
+        public static final int thresholds=0x7f060000;
+    }
     public static final class attr {
     }
     public static final class color {
         public static final int black=0x7f050000;
+        public static final int grey=0x7f050002;
         public static final int white=0x7f050001;
     }
     public static final class drawable {
@@ -19,28 +23,43 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int btnUpload=0x7f08000f;
-        public static final int button1=0x7f080011;
-        public static final int chkBilateralFilter=0x7f08000e;
-        public static final int chkBrightness=0x7f080001;
-        public static final int chkContrast=0x7f080004;
-        public static final int chkGaussianFilter=0x7f08000c;
-        public static final int chkHomogeneousFilter=0x7f08000b;
-        public static final int chkMedianFilter=0x7f08000d;
-        public static final int chkMorph=0x7f080007;
-        public static final int crop=0x7f080013;
-        public static final int done=0x7f080014;
-        public static final int imgView=0x7f080012;
-        public static final int menu_settings=0x7f080015;
-        public static final int resultLabel=0x7f080010;
-        public static final int scroller=0x7f080000;
-        public static final int skbBrightness=0x7f080002;
-        public static final int skbContrast=0x7f080005;
-        public static final int skbMorph=0x7f080008;
-        public static final int textView3=0x7f08000a;
-        public static final int txtBrightness=0x7f080003;
-        public static final int txtContrast=0x7f080006;
-        public static final int txtMorph=0x7f080009;
+        public static final int btnUpload=0x7f09001e;
+        public static final int button1=0x7f090020;
+        public static final int chkBilateralFilter=0x7f09000f;
+        public static final int chkBrightness=0x7f090001;
+        public static final int chkContrast=0x7f090004;
+        public static final int chkGaussianFilter=0x7f09000d;
+        public static final int chkGreyscale=0x7f090010;
+        public static final int chkHistogram=0x7f09000a;
+        public static final int chkHomogeneousFilter=0x7f09000c;
+        public static final int chkMedianFilter=0x7f09000e;
+        public static final int chkMorph=0x7f090007;
+        public static final int chkOtsu=0x7f090016;
+        public static final int chkPyramidDown=0x7f090012;
+        public static final int chkPyramidUp=0x7f090013;
+        public static final int chkThresholding=0x7f090015;
+        public static final int crop=0x7f090022;
+        public static final int done=0x7f090023;
+        public static final int imgView=0x7f090021;
+        public static final int menu_settings=0x7f090024;
+        public static final int resultLabel=0x7f09001f;
+        public static final int scroller=0x7f090000;
+        public static final int skbBrightness=0x7f090002;
+        public static final int skbContrast=0x7f090005;
+        public static final int skbMorph=0x7f090008;
+        public static final int skbThreshMax=0x7f09001b;
+        public static final int skbThreshValue=0x7f090018;
+        public static final int spnThreshType=0x7f09001d;
+        public static final int textView3=0x7f09000b;
+        public static final int textView4=0x7f090011;
+        public static final int textView5=0x7f090014;
+        public static final int txtBrightness=0x7f090003;
+        public static final int txtContrast=0x7f090006;
+        public static final int txtMorph=0x7f090009;
+        public static final int txtThreshMV=0x7f09001a;
+        public static final int txtThreshMax=0x7f09001c;
+        public static final int txtThreshV=0x7f090017;
+        public static final int txtThreshValue=0x7f090019;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -49,8 +68,8 @@ public final class R {
         public static final int cropscreen=0x7f030003;
     }
     public static final class menu {
-        public static final int activity_main=0x7f070000;
-        public static final int activity_result=0x7f070001;
+        public static final int activity_main=0x7f080000;
+        public static final int activity_result=0x7f080001;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
@@ -60,10 +79,11 @@ public final class R {
         public static final int menu_settings=0x7f040002;
         public static final int ocr=0x7f040006;
         public static final int receive=0x7f040004;
+        public static final int thresh_prompt=0x7f040009;
         public static final int title_activity_main=0x7f040003;
         public static final int title_activity_result=0x7f040008;
     }
     public static final class style {
-        public static final int AppTheme=0x7f060000;
+        public static final int AppTheme=0x7f070000;
     }
 }
