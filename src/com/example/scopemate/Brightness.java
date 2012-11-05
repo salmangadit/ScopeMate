@@ -110,7 +110,7 @@ public class Brightness {
 			Log.v(TAG, "null2");
 			e.printStackTrace();
 		}
-
+   
 		final Uri uri = Uri.fromFile(file);
 		Log.v(TAG, uri.toString());
 
