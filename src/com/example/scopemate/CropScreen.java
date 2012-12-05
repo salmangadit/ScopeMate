@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.example.scopemate.BitmapHandler;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -92,20 +94,23 @@ public class CropScreen extends Activity {
 		final Uri image_uri = Uri.parse(b);
 		Log.v(TAG, image_uri.toString());
 
-		try {
-			myimage = MediaStore.Images.Media.getBitmap(
-					this.getContentResolver(), image_uri);
-			// myimage = readBitmap(image_uri);
-			// bmp =
-			// MediaStore.Images.Media.getBitmap(this.getContentResolver(),
-			// Uri.fromFile(file) );
-			// do whatever you want with the bitmap (Resize, Rename, Add To
-			// Gallery, etc)
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			myimage = MediaStore.Images.Media.getBitmap(
+//					this.getContentResolver(), image_uri);
+//			// myimage = readBitmap(image_uri);
+//			// bmp =
+//			// MediaStore.Images.Media.getBitmap(this.getContentResolver(),
+//			// Uri.fromFile(file) );
+//			// do whatever you want with the bitmap (Resize, Rename, Add To
+//			// Gallery, etc)
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+		
+		BitmapHandler bitmaphandler = new BitmapHandler();
+		myimage = bitmaphandler.decodeFileAsPath(filepath);
 
 		// Log.v(TAG,"Myimageeeeee Size:"+myimage.getByteCount());
 
